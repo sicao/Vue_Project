@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+
     <router-view/>
   </div>
 </template>
@@ -12,12 +12,45 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+/*样式重置   全局样式*/
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html{
+	font-size: 50px;
+}
+body{
+	font: 14px/150% "微软雅黑", Verdana, Arial, Helvetica, sans-serif;
+	background: #eee;
+}
+a{
+	color: #666;
+	text-decoration: none;
+}
+a:hover{
+	color: #666;
+}
+ul,ol{
+	list-style: none;
+}
+img{
+	border:none;
+}
+input,textarea{
+	outline: none;
+	border: none;
+}
+textarea{
+	resize: none;
+}
+.clearfix:after {
+    content: " ";
+    visibility: hidden;
+    overflow: hidden;
+    height: 0;
+    clear: both;
+    display: block;
 }
 </style>
