@@ -65,26 +65,52 @@
             <img src="http://res1.360kad.com/theme/default/img/promotions/lifeng/20170726/m/health.jpg" alt="">
           </div>
           <div class="health_lunbo clearfix">
-            <ul class="clearfix">
-              <li>
+            <swiper :options="swiperOption_v">
+              <swiper-slide class="lunbo">
                 <img src="http://image.360kad.com/group1/M00/BB/1E/CgAgEFmUFcGAfFZDAAALa9Y4Sds309.jpg">
                 <a href="http://m.360kad.com/jknews/jksc/fejk/3689005.shtml?kzone=souye_jiankangtoutiao">能不能生，查查生育力就知道了
                 </a>
-              </li>
-              <li>
+              </swiper-slide>
+              <swiper-slide class="lunbo">
                 <img src="http://image.360kad.com/group1/M00/BB/1E/CgAgEVmUFiGAElaXAAALa9Y4Sds472.jpg">
                 <a href="http://m.360kad.com/jknews/jksc/ysbj/3689006.shtml?kzone=souye_jiankangtoutiao">饭菜放凉多久才能放进冰箱，你又被骗了好多年
                 </a>
-              </li>
-              <li>
-                <img src="http://image.360kad.com/group1/M00/BB/1E/CgAgEFmUFUGAACg6AAALa9Y4Sds981.jpg">
+              </swiper-slide>
+              <swiper-slide class="lunbo">
+                 <img src="http://image.360kad.com/group1/M00/BB/1E/CgAgEFmUFUGAACg6AAALa9Y4Sds981.jpg">
                 <a href="http://m.360kad.com/jknews/jksc/tj/3675435.shtml?kzone=souye_jiankangtoutiao">医生都常吃的铁皮石斛，吃它原来有这5种作用
                 </a>
-              </li>
-            </ul>
+              </swiper-slide>
+            </swiper>
           </div>
         </div>
       </section>
+      <div class="skill mt30" id="skill_sec">
+        <div class="skill-top clearfix">
+          <div class="skillt-l fl">
+            <img src="http://res.360kad.com/theme/mobile/img/m_index/skill-logo1.png" alt="">
+          </div>
+          <div class="skillt-m fl" id="skill_timeout">
+          9点场<span>06</span>:<span>07</span>:<span>15</span>
+          </div>
+          <a href="#" class="skillt-r fr">1元秒健康</a>
+        </div>
+        <div class="skill-list" id="skill_list">
+          <!-- <div class="swiper-container-nav">
+            <ul class="clearfix swiper-wrapper">
+              <li class="swiper-slide" v-for="item in seckillImg">
+                <a href="#">
+                <span class="skill-promotion">{{((item.Price-item.PrmPrice)/item.Price).toFixed(1)}}折</span>  
+                <p class="skill-img"><img :src="item.wareInfo.Pic"></p>        
+                <p class="skill-vipprice">￥<span>{{item.PrmPrice}}</span></p>     
+                <p class="skill-marprice">￥{{item.Price}}</p>
+                </a>
+              </li>
+            </ul>
+          </div> -->
+          
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -98,11 +124,22 @@ export default {
     return {
       swiperOption: {
         autoplay: {
-            stopOnLastSlide: true,
+            stopOnLastSlide: false, 
+            disableOnInteraction: false
         },
         pagination: {
-          el: '.swiper-pagination'
-        }
+          el: '.swiper-pagination',
+          clickable :true
+        },
+        loop : true
+      },
+      swiperOption_v:{
+        direction: 'vertical',
+        autoplay: {
+            stopOnLastSlide: false, 
+            disableOnInteraction: false
+        },
+        loop : true
       },
       imgList:[
         "http://image.360kad.com/group2/M00/20/07/CgAgFVolJr-AXj0zAAKKpGXRTEM981.jpg",
@@ -268,9 +305,8 @@ img {
   float: left;
   width: 5.5rem;
   height: 0.39rem;
-  position: relative;
 }
-.health_lunbo li{
+.health_lunbo .lunbo{
   width: 5.5rem;
   font-size: 0.28rem;
   height: 0.4rem;
@@ -280,18 +316,67 @@ img {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.health_lunbo li img{
+.health_lunbo .lunbo img{
     float: left;
     width: 0.6rem;
     height: 0.31rem;
     margin-right: 0.08rem;
 }
-.health_lunbo li a{
+.health_lunbo .lunbo a{
   color: #020202;
   font-size: 0.28rem;
 }
-
-
+.health_lunbo .swiper-container{
+  height: 100%;
+}
 /* index页的秒杀 */
+.mt30 {
+    margin-top: .3rem;
+}
+.skill {
+    background: white;
+}
+.skill-top {
+    padding: .28rem;
+    border-bottom: 1px solid #f7f7f7;
+    font-size: .28rem;
+}
+.skillt-l, .skillt-l img {
+    width: 1.26rem;
+    height: .4rem;
+}
+.skillt-m {
+    font-size: .28rem;
+    margin-left: .24rem;
+    color: #222;
+}
+.skillt-m span{
+    font-size: .24rem;
+    border:1px solid #dfdfdf;
+    border-radius: .05rem;
+    text-align: center;
+    height: .4rem;
+    line-height: .4rem;
+    padding-left: .06rem;
+    padding-right: .06rem;
+    margin-left: .1rem;
+    margin-right: .1rem;
+}
+.skillt-r {
+   display: block;
+    padding: 0;
+    margin: 0;
+    width: 1.5rem;
+    background: url("http://res1.360kad.com/theme/mobile/img/m_index/go1.jpg") right center no-repeat;
+    background-size: 0.14rem 0.23rem;
+    color: #ff3b59;
+    font-size: .28rem;
+    position: relative;
+}
+/* 秒杀商品list */
+.skill-list {
+    padding-top: .35rem;
+    height: 2.9rem;
+}
 
 </style>
