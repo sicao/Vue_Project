@@ -59,6 +59,7 @@
       </a>
     </div>	
     <section class="seclist">
+      <!-- 健康头条 -->
       <section class="health_h">
         <div class="health_c clearfix">
           <div class="health_logo">
@@ -85,6 +86,7 @@
           </div>
         </div>
       </section>
+      <!-- 秒杀(1元秒健康) -->
       <div class="skill mt30" id="skill_sec">
         <div class="skill-top clearfix">
           <div class="skillt-l fl">
@@ -96,20 +98,77 @@
           <a href="#" class="skillt-r fr">1元秒健康</a>
         </div>
         <div class="skill-list" id="skill_list">
-          <!-- <div class="swiper-container-nav">
-            <ul class="clearfix swiper-wrapper">
-              <li class="swiper-slide" v-for="item in seckillImg">
+           <swiper :options="swiperOption_GetSecKillList">
+              <swiper-slide v-for="seckill in GetSecKillList" :key="seckill.id" class="skillList">
                 <a href="#">
-                <span class="skill-promotion">{{((item.Price-item.PrmPrice)/item.Price).toFixed(1)}}折</span>  
-                <p class="skill-img"><img :src="item.wareInfo.Pic"></p>        
-                <p class="skill-vipprice">￥<span>{{item.PrmPrice}}</span></p>     
-                <p class="skill-marprice">￥{{item.Price}}</p>
+                <span class="skill-promotion">{{((seckill.Price-seckill.PrmPrice)/seckill.Price).toFixed(1)}}折</span>  
+                <p class="skill-img"><img :src="seckill.wareInfo.Pic"></p>        
+                <p class="skill-vipprice">￥<span>{{seckill.PrmPrice}}</span></p>     
+                <p class="skill-marprice">￥{{seckill.Price}}</p>
+                </a>
+              </swiper-slide>
+            </swiper>
+        </div>
+      </div>
+      <!-- some-room(imgList) -->
+      <div class="some-room mt30 clearfix">
+        <a href="#">
+          <img src="http://image.360kad.com/group2/M00/13/29/CgAgFVn34PaAVBLPAADN9TulWdg980.jpg">
+        </a>
+        <a href="#">
+          <img src="http://image.360kad.com/group2/M00/14/5A/CgAgFFn8GB-AM3kqAABweiiy_Oo506.jpg">
+        </a>
+        <a href="#">
+          <img src="http://image.360kad.com/group1/M00/BC/A6/CgAgEFmaukOAYoXpAAB--pMKjqo400.jpg">
+        </a>
+        <a href="#">
+          <img src="http://image.360kad.com/group1/M00/7E/97/CgAgEVhssa6AVKKeAAB8bZXNouc315.png">
+        </a>
+        <a href="#">
+          <img src="http://image.360kad.com/group1/M00/7E/97/CgAgEFhssaCAEH4VAABscXeimWc878.png">
+        </a>
+      </div>
+      <!-- 小康推荐 GOOD -->
+      <div class="xklj-list mt30">
+        <div class="floor-title">小康推荐 <span>GOOD</span></div>
+        <!-- <div class="floor-content"> -->
+          <!-- <div class="swiper-container-floor">
+            <ul class="swiper-wrapper clearfix">
+              <li class="swiper-slide">
+                <a href="#">
+                  <img src="http://image.360kad.com/group2/M00/13/23/CgAgFFn31tKAcl4XAAB72Yy19Go754.jpg">
+                </a>
+              </li>
+              <li class="swiper-slide">
+                <a href="#">
+                  <img src="http://image.360kad.com/group2/M00/13/23/CgAgFFn31ueACJzqAACZq1DGv8A322.jpg">
+                </a>
+              </li>
+              <li class="swiper-slide">
+                <a href="#">
+                  <img src="http://image.360kad.com/group2/M00/13/23/CgAgFVn31wCAQcv8AACcKCxZZIw517.png">
                 </a>
               </li>
             </ul>
           </div> -->
-          
-        </div>
+        <swiper :options="swiperOption_floor">
+          <swiper-slide class="floor-content">
+            <a href="#">
+                <img src="http://image.360kad.com/group2/M00/13/23/CgAgFFn31tKAcl4XAAB72Yy19Go754.jpg">
+              </a>
+          </swiper-slide>
+          <swiper-slide class="floor-content">
+              <a href="#">
+                <img src="http://image.360kad.com/group2/M00/13/23/CgAgFFn31ueACJzqAACZq1DGv8A322.jpg">
+              </a>
+          </swiper-slide>
+          <swiper-slide class="floor-content">
+              <a href="#">
+                <img src="http://image.360kad.com/group2/M00/13/23/CgAgFVn31wCAQcv8AACcKCxZZIw517.png">
+              </a>
+          </swiper-slide>
+        </swiper>
+        <!-- </div> -->
       </div>
     </section>
   </div>
@@ -120,6 +179,10 @@ import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
   name: 'HelloWorld',
+  components: {
+    swiper,
+    swiperSlide
+  },
   data () {
     return {
       swiperOption: {
@@ -150,12 +213,31 @@ export default {
         "http://image.360kad.com/group2/M00/1E/D7/CgAgFVogvRSARxfwAAFbc9evGk8061.jpg",
         "http://image.360kad.com/group2/M00/1D/AE/CgAgFVocwMeAXEZBAAF12q3azYk918.jpg",
         "http://image.360kad.com/group2/M00/1D/80/CgAgFVob4vqAZg36AAGSO-a9ePI675.jpg"
-      ]
+      ],
+      // index秒杀
+      swiperOption_GetSecKillList:{
+         slidesPerView: 3.5
+      },
+      GetSecKillList:{},
+      swiperOption_floor:{
+        slidesPerView: 1.6
+      }
     }
   },
-  components: {
-    swiper,
-    swiperSlide
+  mounted() {
+      this.$http.get('/api/SecKill/GetSecKillList',{
+        params:{
+          page:1,
+          pageSize:10,
+          type:1,
+          channelCode:100021,
+          sort:4
+        }
+      }).then((res) => {
+        console.log(res.data.Data);
+        this.GetSecKillList = res.data.Data;
+        console.log(this.GetSecKillList);
+      })
   }
 }
 </script>
@@ -375,8 +457,123 @@ img {
 }
 /* 秒杀商品list */
 .skill-list {
-    padding-top: .35rem;
-    height: 2.9rem;
+    padding: 0.35rem 0 0.25rem 0;
 }
-
+.skill-list .skillList {
+    float: left;
+    width: 25%;
+    position: relative;
+    text-align: center;
+}
+.skill-img img {
+    height: 1.8rem;
+    text-align: center;
+    vertical-align: top;
+}
+.skill-vipprice {
+    color: #ff4e49;
+    font-size: .22rem;
+    line-height: .32rem;
+    margin-top: .16rem;
+}
+.skill-vipprice span {
+    font-size: .28rem;
+    font-weight: bold;
+}
+.skill-marprice {
+    font-size: .22rem;
+    line-height: .3rem;
+    color: #b5b5b5;
+    text-decoration: line-through;
+    margin-top: .04rem;
+}
+.skill-promotion{
+    background: -webkit-linear-gradient(left, #fe5d3a 0%,#ff2b67 100%);
+}
+.skill-promotion {
+    background-color: #ff970f;
+    color: white;
+    font-size: .24rem;
+    width: 1rem;
+    height: .4rem;
+    line-height: .4rem;
+    text-align: center;
+    position: absolute;
+    top: 1.35rem;
+    right: 0.2rem;
+    border-top-left-radius: .2rem;
+    border-bottom-left-radius: .2rem;
+}
+/*------------some-room(imgList)----------------*/
+.some-room {
+    height: 5.32rem;
+    background-color: white;
+}
+.some-room a {
+    display: block;
+    float: left;
+    width: 50%;
+}
+.some-room a:first-child {
+    height: 3.6rem;
+    border-right: 1px solid #f9f9f9;
+    border-bottom: 1px solid #f9f9f9;
+}
+.some-room a:first-child img {
+    height: 3.59rem;
+}
+.some-room a:nth-child(2), .some-room a:nth-child(3) {
+    height: 1.8rem;
+    border-bottom: 1px solid #f9f9f9;
+}
+.some-room a:nth-child(2) img, .some-room a:nth-child(3) img {
+    height: 1.79rem;
+}
+.some-room a:nth-child(4), .some-room a:nth-child(5) {
+    height: 1.7rem;
+    float: right;
+}
+.some-room a:nth-child(5) {
+    border-right: 1px solid #f9f9f9;
+}
+.some-room a:nth-child(4) img, .some-room a:nth-child(5) img {
+    height: 1.7rem;
+}
+/* 小康推荐 */
+/*------------小康推荐--------------*/
+.xklj-list {
+    background-color: white;
+    overflow-x: hidden;
+}
+.floor-title {
+    height: .96rem;
+    line-height: .96rem;
+    text-align: center;
+    color: #222;
+    font-size: .34rem;
+    font-weight: bold;
+    position: relative;
+    background-color: white;
+    border-bottom: 1px solid #f7f7f7;
+}
+.floor-title span {
+    color: #b9e1f0;
+    font-size: .3rem;
+    padding-right: .14rem;
+}
+.xklj-list .floor-content {
+    /* width: 53.33%; */
+    height: 3rem;
+    /* padding-left: 0.3rem; */
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+}
+.xklj-list .floor-content:last-of-type{
+   margin-right: 0.3rem;
+}
+.xklj-list .floor-content img{
+    margin: auto;
+    width: 4rem;
+    height: 100%;
+}
 </style>
