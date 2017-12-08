@@ -131,26 +131,6 @@
       <!-- 小康推荐 GOOD -->
       <div class="xklj-list mt30">
         <div class="floor-title">小康推荐 <span>GOOD</span></div>
-        <!-- <div class="floor-content"> -->
-          <!-- <div class="swiper-container-floor">
-            <ul class="swiper-wrapper clearfix">
-              <li class="swiper-slide">
-                <a href="#">
-                  <img src="http://image.360kad.com/group2/M00/13/23/CgAgFFn31tKAcl4XAAB72Yy19Go754.jpg">
-                </a>
-              </li>
-              <li class="swiper-slide">
-                <a href="#">
-                  <img src="http://image.360kad.com/group2/M00/13/23/CgAgFFn31ueACJzqAACZq1DGv8A322.jpg">
-                </a>
-              </li>
-              <li class="swiper-slide">
-                <a href="#">
-                  <img src="http://image.360kad.com/group2/M00/13/23/CgAgFVn31wCAQcv8AACcKCxZZIw517.png">
-                </a>
-              </li>
-            </ul>
-          </div> -->
         <swiper :options="swiperOption_floor">
           <swiper-slide class="floor-content">
             <a href="#">
@@ -168,7 +148,170 @@
               </a>
           </swiper-slide>
         </swiper>
-        <!-- </div> -->
+      </div>
+      <!-- 图片轮播 -->
+      <div class="banner2">
+        <swiper :options="swiperOption">
+          <swiper-slide>
+            <a href="#">
+                <img src="http://image.360kad.com/group2/M00/20/27/CgAgFVol7-6AeR6CAAFd8xkN6N8955.jpg">
+              </a>
+          </swiper-slide>
+          <swiper-slide>
+            <a href="#">
+                <img src="http://image.360kad.com/group2/M00/21/02/CgAgFVoou92AczwOAAEQCVExFR0875.jpg">
+              </a>
+          </swiper-slide>
+          <swiper-slide>
+            <a href="#">
+                <img src="http://image.360kad.com/group2/M00/20/F8/CgAgFFoopqKADJH2AACwIumbe0Y863.jpg">
+              </a>
+          </swiper-slide>
+          <swiper-slide>
+            <a href="#">
+                <img src="http://image.360kad.com/group2/M00/1F/D2/CgAgFFokr_mAR60aAAGFRXNwUIQ235.jpg">
+              </a>
+          </swiper-slide>
+          <swiper-slide>
+            <a href="#">
+                <img src="http://image.360kad.com/group2/M00/1E/D7/CgAgFFogvV-ATU9qAAFG_PQ4J0s580.jpg">
+              </a>
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
+      </div>
+      <!-- 病科类 -->
+      <div id="cateBox">
+        <section class="category mt30" v-for="item in diseaseCategory" :key="item.id">
+          <div class="category-head">
+            <img :src="item.FloorImg">
+          </div>
+          <swiper :options="swiperOption_GetSecKillList">
+            <swiper-slide v-for="item in item.LunBoList" :key="item.id">
+              <a href="#">
+                <img :src="item.Pic">
+              </a>
+            </swiper-slide>
+          </swiper>
+          <div class="category-videos clearfix">
+            <a href="#" v-for="item in item.VideoList" :key="item.id">
+              <img :src="item.Pic">
+            </a>
+          </div>
+          <div class="category-txt clearfix">
+            <ul>
+              <li v-for="item in item.TextList" :key="item.id">
+                <i>
+                  <img :src="item.Logo">
+                </i>
+                <a href="#">{{item.Title}}</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+      <!-- 图片轮播banner3 -->
+      <div class="guid mt30">
+        <swiper :options="swiperOption">
+          <swiper-slide>
+            <a href="#">
+                <img src="http://image.360kad.com/group2/M00/20/27/CgAgFVol7-6AeR6CAAFd8xkN6N8955.jpg">
+              </a>
+          </swiper-slide>
+          <swiper-slide>
+            <a href="#">
+                <img src="http://image.360kad.com/group2/M00/21/02/CgAgFVoou92AczwOAAEQCVExFR0875.jpg">
+              </a>
+          </swiper-slide>
+          <swiper-slide>
+            <a href="#">
+                <img src="http://image.360kad.com/group2/M00/20/F8/CgAgFFoopqKADJH2AACwIumbe0Y863.jpg">
+              </a>
+          </swiper-slide>
+          <swiper-slide>
+            <a href="#">
+                <img src="http://image.360kad.com/group2/M00/1F/D2/CgAgFFokr_mAR60aAAGFRXNwUIQ235.jpg">
+              </a>
+          </swiper-slide>
+          <swiper-slide>
+            <a href="#">
+                <img src="http://image.360kad.com/group2/M00/1E/D7/CgAgFFogvV-ATU9qAAFG_PQ4J0s580.jpg">
+              </a>
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
+      </div>
+      <!-- 猜你喜欢 -->
+      <div class="user-like">
+        <div class="like-top">
+          <p class="liketop-name">猜你喜欢</p>
+          <p class="liketop-line"></p>
+        </div>
+        <div class="like-list" id="like-list">
+          <ul class="clearfix">
+              <li v-for="item in youLike" :key="item.id">
+                <a href="#">
+                  <p class="likepro-img">
+                    <img :src="item.Pic180">
+                  </p>
+                  <p class="likepro-name plr26 text-elli">{{item.WareName}}</p>
+                  <p class="likepro-price clearfix plr26">
+                    <span class="fl">￥<span>{{item.SalePrice}}</span></span>
+                    <span class="fr">￥{{item.MarketPrice}}</span>
+                  </p>
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- 底部 -->
+    <footer class="index-footer-wrap">
+      <div class="footer-size1 clearfix">
+        <a href="#" class="pifa_shop">批发商洽<span></span></a>
+        <a href="#">用药问答</a>
+        <a href="#">药品库</a>
+        <a href="#">健康咨讯</a>
+      </div>
+      <div id="IsLogin" class="footer-size1 clearfix">
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+            <a href="#">点赞吐槽</a>
+            <a href="#">关于康爱多</a>
+      </div>
+      <div class="footer-size2">
+        <span>正品保证</span>
+        <span>隐私配送</span>
+        <span>专业药师</span>
+        <span>货到付款</span>
+      </div>
+      <div class="footer-size3">copyright&nbsp;&nbsp;©2010-2016 康爱多网上药店 版权所有</div>
+    </footer>
+    <!-- 咨询 -->
+    <section>
+      <div class="kf-bg"></div>
+      <div class="index-kf-wrap">
+        <div id="moreW" class="kf-cont">咨询</div>
+        <div class="more-wrap">
+          <i class="bt-bg"></i>
+          <ul class="nav-ul2">
+            <li><a href="#">电话咨询</a></li>
+            <li class="zx2"><a href="javascript:void(0)">在线咨询</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- 回到顶部 -->
+    <section>
+      <div class="top-bg" style="display: none;"></div>
+      <div class="index-top-wrap" style="display: block;">
+          <div class="top-cont">顶部</div>
+      </div>
+    </section>
+    <!-- 下载注册 -->
+    <section>
+      <div class="index-footer-nav" id="lonw_warp">
+        <img src="http://image.360kad.com/group2/M00/11/1A/CgAgFFnv-s6AH96mAACDvcHvU5g049.jpg">
       </div>
     </section>
   </div>
@@ -218,14 +361,17 @@ export default {
       swiperOption_GetSecKillList:{
          slidesPerView: 3.5
       },
-      GetSecKillList:{},
+      GetSecKillList: {},
       swiperOption_floor:{
-        slidesPerView: 1.6
-      }
+        slidesPerView: 1.74
+      },
+      diseaseCategory: {},
+      youLike: {}
     }
   },
   mounted() {
-      this.$http.get('/api/SecKill/GetSecKillList',{
+    // index秒杀
+    this.$http.get('/api/SecKill/GetSecKillList',{
         params:{
           page:1,
           pageSize:10,
@@ -234,22 +380,33 @@ export default {
           sort:4
         }
       }).then((res) => {
-        console.log(res.data.Data);
         this.GetSecKillList = res.data.Data;
-        console.log(this.GetSecKillList);
+      });
+      //病科类型
+      this.$http.get('/api/home/GetHomeFloorAdView').then((res) => {
+        this.diseaseCategory = res.data;
+      });
+      //猜你喜欢
+      this.$http.get('/api/DataPlatform/GetIndexGuessLikeProducts',{
+        params: {
+          pagesize:8,
+		   		pageindex:1
+        }
+      }).then((res) => {
+        console.log(res.data.Data);
+        this.youLike = res.data.Data;
       })
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 /*-----------------------首页-----------------------*/
 img {
     width: 100%;
     margin: 0;
     padding: 0;
-    /* vertical-align: top; */
     display: block;
 }
 .fl{
@@ -356,7 +513,6 @@ img {
 .navlist li p:first-child img {
     width: 1rem;
     height: 1rem;
-    /* vertical-align: top; */
     display: block;
 }
 .navlist ul li:nth-child(n+5) {
@@ -561,19 +717,353 @@ img {
     font-size: .3rem;
     padding-right: .14rem;
 }
-.xklj-list .floor-content {
-    /* width: 53.33%; */
+.floor-content {
     height: 3rem;
-    /* padding-left: 0.3rem; */
     padding-top: .3rem;
     padding-bottom: .3rem;
 }
-.xklj-list .floor-content:last-of-type{
-   margin-right: 0.3rem;
+.floor-content:first-of-type{
+  padding-left: .3rem;
 }
-.xklj-list .floor-content img{
-    margin: auto;
-    width: 4rem;
+.floor-content:nth-child(2){
+  margin-left: .3rem;
+}
+.floor-content:last-of-type{
+  padding-right: .3rem;
+}
+.floor-content a{
+  display: inline-block;
+  width: 4rem;
+}
+.floor-content img{
+    width: 100%;
     height: 100%;
+}
+/*-------------图片轮播---------------*/
+.banner2{
+    width: 100%;
+    height: 2rem;
+}
+.banner2 img{
+    height: 100%;
+    overflow: hidden;
+}
+/*----------病科种类------------*/
+#cateBox .category {
+    width: 100%;
+    background: #fff;
+    overflow-x: hidden;
+}
+#cateBox .category-head {
+    width: 100%;
+    height: 0.8rem;
+}
+#cateBox .category-head img{
+    width: 100%;
+    height: 0.8rem;
+}
+#cateBox .category-navss {
+    top: 0.01rem;
+    border-bottom: 1px solid #F0F0F0;
+}
+#cateBox .category-videos img {
+    width: 3.74rem;
+    float: left;
+    border-bottom: 1px solid #F0F0F0;
+}
+#cateBox .category-videos img:first-of-type {
+    border-right: 1px solid #F0F0F0;
+}
+#cateBox .category-txt {
+    width: 100%;
+    background: #fff;
+}
+#cateBox .category-txt li {
+    display: flex;
+    align-items: center;
+    clear: both;
+    padding: 0 0.16rem 0.05rem;
+}
+#cateBox .category-txt li:first-of-type {
+    padding-top: 0.2rem;
+}
+#cateBox .category-txt li:last-of-type {
+    padding-bottom: 0.2rem !important;
+}
+#cateBox .category-txt i {
+    float: left;
+    width: 0.59rem;
+    margin-right: 0.15rem;
+}
+#cateBox .category-txt i img{
+    vertical-align: middle;
+}
+#cateBox .category-txt a {
+    font-size: 0.3rem;
+    display: block;
+    color: #020202;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/*------------- 图片轮播banner3------------*/
+.guid {
+    width: 100%;
+    height: 2rem;
+}
+.guid img{
+    width: 100%;
+    height: 2rem;
+    vertical-align: bottom;
+}
+/*-------------猜你喜欢-----------------*/
+.like-top {
+    position: relative;
+    width: 5.2rem;
+    height: .3rem;
+    line-height: .3rem;
+    color: #888888;
+    font-size: .3rem;
+    margin:  .47rem auto .27rem auto;
+    text-align: center;
+}
+.liketop-name {
+    position: absolute;
+    width: 1.94rem;
+    height: .3rem;
+    left: 1.63rem;
+    top: 0;
+    background: #eeeeee url(../assets/img/likestar.png) no-repeat .18rem .04rem;
+    background-size: .26rem .22rem;
+    z-index: 2;
+    text-align: center;
+    text-indent: .52rem;
+}
+.liketop-line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #e0e0e0;
+    top: .145rem;
+    left: 0;
+    z-index: 1;
+}
+.like-list ul li {
+    width: 49.5%;
+    float: left;
+    vertical-align: top;
+    border: 1px solid #f2f2f2;
+    background-color: white;
+    margin-bottom: .08rem;
+}
+.like-list ul li:nth-child(2n-1) {
+    margin-right: 1%;
+}
+.likepro-img, .likepro-img img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+.likepro-img {
+    margin: .5rem auto;
+}
+.likepro-name {
+    color: #222;
+    font-size: .28rem;
+    line-height: .4rem;
+    margin-top: .1rem;
+    margin-bottom: .1rem;
+}
+.plr26 {
+    padding-left: .26rem;
+    padding-right: .26rem;
+}
+.text-elli {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.likepro-price {
+    line-height: .4rem;
+    margin-bottom: .3rem;
+}
+.likepro-price .fl {
+    color: #fd3f3f;
+    font-size: .22rem;
+}
+.likepro-price .fl span {
+    font-size: .3rem;
+    font-weight: bold;
+}
+.likepro-price .fr {
+    font-size: .24rem;
+    color: #b5b5b5;
+    text-decoration: line-through;
+}
+/*----------底部------------*/
+.index-footer-wrap {
+    width: 100%;
+    padding: .5rem .2rem .3rem;
+    background-color: #fff;
+}
+.footer-size1, .footer-size2 {
+    height: .4rem;
+    line-height: .4rem;
+    margin-bottom: .3rem;
+    text-align: center;
+}
+.footer-size1:nth-child(1) {
+    margin-left: 0.3rem;
+}
+.footer-size1:nth-child(2) {
+    margin-left: 0.9rem;
+}
+.footer-size1 a {
+    height: .3rem;
+    display: inline-block;
+    line-height: .3rem;
+    font-size: .28rem;
+    color: #898989;
+    padding: 0 .3rem;
+    border-left: solid 1px #dadada;
+}
+.footer-size1 a:first-child {
+    border-left: none;
+    padding-left: .2rem;
+}
+.pifa_shop {
+    position: relative;
+}
+.pifa_shop span {
+    background: url(http://res.360kad.com/theme/default/img/product/2014new/pifa_new.png);
+    width: 23px;
+    height: 10px;
+    display: inline-block;
+    position: absolute;
+    top: -0.22rem;
+    right: 0.2rem;
+}
+.footer-size3 {
+    font-size: .24rem;
+    color: #898989;
+    line-height: .4rem;
+    text-align: center;
+}
+.footer-size2 {
+    margin-bottom: 0;
+}
+.footer-size2 span {
+    display: inline-block;
+    line-height: .4rem;
+    font-size: .24rem;
+    color: #252525;
+    padding: 0 .3rem 0 .35rem;
+    background: url(../assets/img/sevice_icon.png) no-repeat left center;
+    background-size: .26rem;
+}
+/*--------------在线咨询  回到顶部  注册关注-------------*/
+.index-kf-wrap, .kf-bg, .index-top-wrap, .top-bg {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    position: fixed;
+    bottom: 2rem;
+    z-index: 3;
+}
+.index-kf-wrap, .kf-bg {
+    left: .3rem;
+}
+.kf-bg {
+    background-color: #3894f4;
+    opacity: .9;
+}
+.kf-cont, .top-cont {
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.kf-cont, .top-cont {
+    padding-top: .6rem;
+    box-sizing: border-box;
+    background: url(../assets/img/kfIcon.png) no-repeat center .12rem;
+    background-size: .55rem .46rem;
+    font-size: .22rem;
+    color: #fff;
+    text-align: center;
+    line-height: .3rem;
+}
+.top-bg {
+    background-color: #000;
+    opacity: .5;
+}
+.index-top-wrap, .top-bg {
+    right: .3rem;
+}
+.top-cont {
+    background: url(../assets/img/topIcon.png) no-repeat center .12rem;
+    background-size: .55rem .46rem;
+}
+.index-footer-nav {
+    width: 100%;
+    height: 1.07rem;
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    transition: bottom 300ms ease-out;
+    display: block;
+}
+.index-footer-nav img {
+    width: 100%;
+}
+/*----------咨询Item--------*/
+.more-wrap {
+    width: 3rem;
+    height: 1.8rem;
+    position: absolute;
+    top: -2rem;
+    left: -.3rem;
+    background: #fff;
+    border: solid 1px #dadada;
+    padding: 0 .2rem;
+    transition: all 0.3s;
+    transform: translate(-.7rem,1.2rem) scale(0,0) rotate(0);
+    visibility: hidden;
+}
+.index-kf-wrap .curindex {
+    visibility: visible;
+    background: #fff;
+    transform: translate(0,0) scale(1,1) rotate(0);
+}
+.more-wrap .bt-bg {
+    width: .34rem;
+    height: .21rem;
+    background: url(../assets/img/right_sel.png) no-repeat center;
+    background-size: 100%;
+    display: inline-block;
+    position: absolute;
+    bottom: -.18rem;
+    left: .58rem;
+}
+.nav-ul2 li {
+    height: .9rem;
+    line-height: .9rem;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-left: .82rem;
+    padding-right: .15rem;
+    font-size: .3rem;
+    color: #555555;
+}
+.nav-ul2 li:nth-child(1) {
+    background: url(../assets/img/phone_icon.png) no-repeat .15rem center;
+    background-size: .5rem .5rem;
+}
+.nav-ul2 li.zx2 {
+    border-top: solid 1px #f1f1f1;
+    background: url(../assets/img/zxIcon.png) no-repeat .15rem center;
+    background-size: .5rem .5rem;
 }
 </style>
