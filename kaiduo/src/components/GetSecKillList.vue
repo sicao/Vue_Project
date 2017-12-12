@@ -362,7 +362,7 @@ export default {
 	    border: .1rem solid transparent;
 	    border-top-style: solid;
 	    border-top-color: #06a6f8;
-	    z-index: 2;
+	    z-index: 1;
 	}
 	/*------tab的显示隐藏控制区-------*/
 	.nav_licur a{
@@ -427,7 +427,7 @@ export default {
 	    vertical-align: middle;
 	}
 	.pro_imggery {
-	    z-index: 3;
+	    z-index: 1;
 	    position: absolute;
 	    width: 2.4rem;
 	    height: 2.4rem;
@@ -436,7 +436,7 @@ export default {
 	    background: #000000 url(../assets/img/already_yqw.png) no-repeat .4rem;
 	    background-size: 60%;
 	    opacity: .3;
-	    display: none;
+	    display: block;
 	}
 	.ms_logo {
 	    position: absolute;
@@ -541,7 +541,6 @@ export default {
 	/*-------即将开始-----------*/
 	.stay_tuned_button {
 	    display: block;
-	    z-index: 3;
 	    position: absolute;
 	    width: 1.6rem;
 	    height: .64rem;
