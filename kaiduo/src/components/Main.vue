@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="main">
     <header class="search" id="search">
       <div class="opc-change"></div>
       <div class="search-inner clearfixed">
@@ -321,7 +321,6 @@
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
-  name: 'HelloWorld',
   components: {
     swiper,
     swiperSlide
