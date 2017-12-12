@@ -911,12 +911,12 @@ img {
     margin-bottom: .3rem;
     text-align: center;
 }
-.footer-size1:nth-child(1) {
+/* .footer-size1:nth-child(1) {
     margin-left: 0.3rem;
 }
 .footer-size1:nth-child(2) {
     margin-left: 0.9rem;
-}
+} */
 .footer-size1 a {
     height: .3rem;
     display: inline-block;
