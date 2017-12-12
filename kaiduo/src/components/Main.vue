@@ -87,29 +87,31 @@
         </div>
       </section>
       <!-- 秒杀(1元秒健康) -->
-      <div class="skill mt30" id="skill_sec">
-        <div class="skill-top clearfix">
-          <div class="skillt-l fl">
-            <img src="http://res.360kad.com/theme/mobile/img/m_index/skill-logo1.png" alt="">
-          </div>
-          <div class="skillt-m fl" id="skill_timeout">
-          9点场<span>06</span>:<span>07</span>:<span>15</span>
-          </div>
-          <a href="#" class="skillt-r fr">1元秒健康</a>
+      <router-link to='/getSecKillList'>
+        <div class="skill mt30" id="skill_sec">
+            <div class="skill-top clearfix">
+            <div class="skillt-l fl">
+                <img src="http://res.360kad.com/theme/mobile/img/m_index/skill-logo1.png" alt="">
+            </div>
+            <div class="skillt-m fl" id="skill_timeout">
+            9点场<span>06</span>:<span>07</span>:<span>15</span>
+            </div>
+            <a href="#" class="skillt-r fr">1元秒健康</a>
+            </div>
+            <div class="skill-list" id="skill_list">
+            <swiper :options="swiperOption_GetSecKillList">
+                <swiper-slide v-for="seckill in GetSecKillList" :key="seckill.id" class="skillList">
+                    <a href="#">
+                    <span class="skill-promotion">{{((seckill.Price-seckill.PrmPrice)/seckill.Price).toFixed(1)}}折</span>  
+                    <p class="skill-img"><img :src="seckill.wareInfo.Pic"></p>        
+                    <p class="skill-vipprice">￥<span>{{seckill.PrmPrice}}</span></p>     
+                    <p class="skill-marprice">￥{{seckill.Price}}</p>
+                    </a>
+                </swiper-slide>
+                </swiper>
+            </div>
         </div>
-        <div class="skill-list" id="skill_list">
-           <swiper :options="swiperOption_GetSecKillList">
-              <swiper-slide v-for="seckill in GetSecKillList" :key="seckill.id" class="skillList">
-                <a href="#">
-                <span class="skill-promotion">{{((seckill.Price-seckill.PrmPrice)/seckill.Price).toFixed(1)}}折</span>  
-                <p class="skill-img"><img :src="seckill.wareInfo.Pic"></p>        
-                <p class="skill-vipprice">￥<span>{{seckill.PrmPrice}}</span></p>     
-                <p class="skill-marprice">￥{{seckill.Price}}</p>
-                </a>
-              </swiper-slide>
-            </swiper>
-        </div>
-      </div>
+      </router-link>
       <!-- some-room(imgList) -->
       <div class="some-room mt30 clearfix">
         <a href="#">
@@ -381,20 +383,22 @@ export default {
       }).then((res) => {
         this.GetSecKillList = res.data.Data;
       });
-      //病科类型
-      this.$http.get('/api/home/GetHomeFloorAdView').then((res) => {
-        this.diseaseCategory = res.data;
-      });
-      //猜你喜欢
-      this.$http.get('/api/DataPlatform/GetIndexGuessLikeProducts',{
-        params: {
-          pagesize:8,
-		   		pageindex:1
-        }
-      }).then((res) => {
-        console.log(res.data.Data);
-        this.youLike = res.data.Data;
-      })
+    //病科类型
+    this.$http.get('/api/home/GetHomeFloorAdView').then((res) => {
+      this.diseaseCategory = res.data;
+    });
+    //猜你喜欢
+    this.$http.get('/api/DataPlatform/GetIndexGuessLikeProducts',{
+      params: {
+        pagesize:8,
+	   		pageindex:1
+      }
+    }).then((res) => {
+      this.youLike = res.data.Data;
+    })
+  },
+  created(){
+      
   }
 }
 </script>
