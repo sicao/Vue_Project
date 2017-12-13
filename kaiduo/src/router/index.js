@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Main from '@/components/Main'
+import Home from '@/components/Home'
 import GetSecKillList from '@/components/GetSecKillList'
 
 Vue.use(Router)
@@ -10,7 +10,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Main
+      component: Home
     },
     //商品秒杀页面List
     {
