@@ -105,102 +105,22 @@
 			</div>
 			<div :class="['SecKill_list', {curContent: 2==curIndex}]" id="look_forward">
 				<ul>
-					<li class="clearfix">
+					<li class="clearfix" v-for="item in seckillist2" :key="item.id">
 						<div class="pro_l">
 							<a href="#">
-								<span class="ms_logo">3.2折</span>
+								<span class="ms_logo">{{((item.Price-item.PrmPrice)/item.Price).toFixed(1)}}折</span>
 								<p class="pro_img">
-									<img src="http://image.360kad.com/group1/M00/0F/06/CgAgEVZv0OCAJrLmAAAgAAjnvT420.jpeg">
+									<img :src="item.wareInfo.Pic">
 								</p>
 								<p class="pro_imggery"></p>
 							</a>
 						</div>
 						<div class="pro_r">
 							<a href="#">
-								<p class="pro_name">海氏海诺 创口贴（透明防水型） 6片/盒</p>
+								<p class="pro_name">{{item.WareName}}</p>
 								<p class="pro_ad clearfix text-elli"><span class="ad_red">限购</span>购买1件时享受优惠，超出数量以结算价为准</p>
-								<p class="pro_msprice price_com red">￥1.11</p>
-								<p class="pro_vip price_com grey">￥3.50</p>
-							</a>
-							<a href="#" class="stay_tuned_button">敬请期待</a>
-						</div>
-					</li>
-					<li class="clearfix">
-						<div class="pro_l">
-							<a href="#">
-								<span class="ms_logo">3.2折</span>
-								<p class="pro_img">
-									<img src="http://image.360kad.com/group2/M00/16/49/CgAgFFoCw_mAOYZsAAMF8my3gYE606.jpg_180x180.jpg">
-								</p>
-								<p class="pro_imggery"></p>
-							</a>
-						</div>
-						<div class="pro_r">
-							<a href="#">
-								<p class="pro_name">海氏海诺 创口贴（透明防水型） 6片/盒</p>
-								<p class="pro_ad clearfix text-elli"><span class="ad_red">限购</span>购买1件时享受优惠，超出数量以结算价为准</p>
-								<p class="pro_msprice price_com red">￥1.11</p>
-								<p class="pro_vip price_com grey">￥3.50</p>
-							</a>
-							<a href="#" class="stay_tuned_button">敬请期待</a>
-						</div>
-					</li>
-					<li class="clearfix">
-						<div class="pro_l">
-							<a href="#">
-								<span class="ms_logo">3.2折</span>
-								<p class="pro_img">
-									<img src="http://image.360kad.com/group1/M00/9A/0A/CgAgEFjteZSANI5IAAHgatUWfQs651.jpg_180x180.jpg">
-								</p>
-								<p class="pro_imggery"></p>
-							</a>
-						</div>
-						<div class="pro_r">
-							<a href="#">
-								<p class="pro_name">海氏海诺 创口贴（透明防水型） 6片/盒</p>
-								<p class="pro_ad clearfix text-elli"><span class="ad_red">限购</span>购买1件时享受优惠，超出数量以结算价为准</p>
-								<p class="pro_msprice price_com red">￥1.11</p>
-								<p class="pro_vip price_com grey">￥3.50</p>
-							</a>
-							<a href="#" class="stay_tuned_button">敬请期待</a>
-						</div>
-					</li>
-					<li class="clearfix">
-						<div class="pro_l">
-							<a href="#">
-								<span class="ms_logo">3.2折</span>
-								<p class="pro_img">
-									<img src="http://image.360kad.com/group1/M00/1F/E0/CgAgEFbT4LWAZaLFAAGjCQI3hrg639.jpg_180x180.jpg">
-								</p>
-								<p class="pro_imggery"></p>
-							</a>
-						</div>
-						<div class="pro_r">
-							<a href="#">
-								<p class="pro_name">海氏海诺 创口贴（透明防水型） 6片/盒</p>
-								<p class="pro_ad clearfix text-elli"><span class="ad_red">限购</span>购买1件时享受优惠，超出数量以结算价为准</p>
-								<p class="pro_msprice price_com red">￥1.11</p>
-								<p class="pro_vip price_com grey">￥3.50</p>
-							</a>
-							<a href="#" class="stay_tuned_button">敬请期待</a>
-						</div>
-					</li>
-					<li class="clearfix">
-						<div class="pro_l">
-							<a href="#">
-								<span class="ms_logo">3.2折</span>
-								<p class="pro_img">
-									<img src="http://image.360kad.com/group1/M00/21/7F/CgAgEVbjiJmAL5GQAAGufNQTFEo426.jpg_180x180.jpg">
-								</p>
-								<p class="pro_imggery"></p>
-							</a>
-						</div>
-						<div class="pro_r">
-							<a href="#">
-								<p class="pro_name">海氏海诺 创口贴（透明防水型） 6片/盒</p>
-								<p class="pro_ad clearfix text-elli"><span class="ad_red">限购</span>购买1件时享受优惠，超出数量以结算价为准</p>
-								<p class="pro_msprice price_com red">￥1.11</p>
-								<p class="pro_vip price_com grey">￥3.50</p>
+								<p class="pro_msprice price_com red">￥{{item.PrmPrice.toFixed(2)}}</p>
+								<p class="pro_vip price_com grey">￥{{item.Price.toFixed(2)}}</p>
 							</a>
 							<a href="#" class="stay_tuned_button">敬请期待</a>
 						</div>
@@ -213,7 +133,7 @@
 				<span class="activty_title_l">更多精彩活动</span>
 				<span class="activty_title_r">MORE</span>
 			</div>
-			<a href="#" class="back_index">返回首页</a>
+			<a href="#" class="back_index" @click.prevent="back()">返回首页</a>
 		</section>
     </div>
 </template>
@@ -240,11 +160,12 @@ export default {
                 loop : true
             },
             curIndex: 1,
-            seckillist:{}
+			seckillist: {},
+			seckillist2: {}
         }
     },
     created(){
-        //秒杀
+        //秒杀1
         this.$http.get('/api/SecKill/GetSecKillList',{
             params:{ 
             type: 1,
@@ -255,6 +176,18 @@ export default {
       }).then((res) => {
          this.seckillist = res.data.Data;
          console.log(this.seckillist);
+	  });
+	  //秒杀2
+        this.$http.get('/api/SecKill/GetSecKillList',{
+            params:{ 
+            type: 2,
+            sort: 1,
+            channelCode: 100021,
+            pageSize:30
+        }
+      }).then((res) => {
+         this.seckillist2 = res.data.Data;
+         console.log(this.seckillist2);
       });
 	},
 	methods: {
