@@ -1,7 +1,7 @@
 <template>
     <div id="seckill">
         <section class="SecKill_header clearfix">
-			<a class="header_l"></a>
+			<a class="header_l" @click="back()"></a>
 			<span class="header_middle">超值秒杀</span>
 			<div class="header_r clearfix">
 				<a href="#" class="header_search"></a>
@@ -243,7 +243,7 @@ export default {
             seckillist:{}
         }
     },
-    mounted(){
+    created(){
         //秒杀
         this.$http.get('/api/SecKill/GetSecKillList',{
             params:{ 
@@ -256,7 +256,12 @@ export default {
          this.seckillist = res.data.Data;
          console.log(this.seckillist);
       });
-    }
+	},
+	methods: {
+		back() {
+			history.back()
+		}
+	}
 }
 </script>
     
@@ -436,7 +441,7 @@ export default {
 	    background: #000000 url(../assets/img/already_yqw.png) no-repeat .4rem;
 	    background-size: 60%;
 	    opacity: .3;
-	    display: block;
+	    display: none;
 	}
 	.ms_logo {
 	    position: absolute;

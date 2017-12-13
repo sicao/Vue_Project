@@ -370,8 +370,8 @@ export default {
       youLike: {}
     }
   },
-  mounted() {
-    // index秒杀
+  created(){
+      // index秒杀
     this.$http.get('/api/SecKill/GetSecKillList',{
         params:{
           page:1,
@@ -396,9 +396,6 @@ export default {
     }).then((res) => {
       this.youLike = res.data.Data;
     })
-  },
-  created(){
-      
   }
 }
 </script>
