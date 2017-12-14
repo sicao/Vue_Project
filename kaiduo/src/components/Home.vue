@@ -19,29 +19,29 @@
     </div>
     <nav class="navlist">
       <ul class="clearfix">
-        <li class="nav-item"><a href="#">
+        <li class="nav-item"><router-link to="/allKind">
           <p><img src="http://image.360kad.com/group2/M00/14/62/CgAgFFn8KsSAMkg1AAAM1UHLKkQ187.png" alt="全部分类"></p>
-          <p>全部分类</p></a>
+          <p>全部分类</p></router-link>
         </li>
-        <li class="nav-item"><a href="#">
+        <li class="nav-item"><router-link to="/seek">
           <p><img src="http://image.360kad.com/group2/M00/14/62/CgAgFFn8Kw-ABjPqAAAMMx7VPjU331.png" alt="自助找药"></p>
-          <p>自助找药</p></a>
+          <p>自助找药</p></router-link>
         </li>
-        <li class="nav-item"><a href="#">
+        <li class="nav-item"><router-link to="/sign">
           <p><img src="http://image.360kad.com/group2/M00/14/62/CgAgFFn8Kz-Ac8sIAAAMpTHQrPc757.png" alt="每日签到"></p>
-          <p>每日签到</p></a>
+          <p>每日签到</p></router-link>
         </li>
-        <li class="nav-item"><a href="#">
+        <li class="nav-item"><router-link to="/transportation">
           <p class="nav-item-img"><img src="http://image.360kad.com/group2/M00/14/62/CgAgFVn8K2GAVIsAAAAKsRwt1n0652.png" alt="查看物流"></p>
-          <p>查看物流</p></a>
+          <p>查看物流</p></router-link>
         </li>
-        <li class="nav-item"><a href="#">
+        <li class="nav-item"><router-link to="/man">
           <p><img src="http://image.360kad.com/group2/M00/14/62/CgAgFVn8K3yAR1utAAAMAncGfHA538.png" alt="男科频道"></p>
-          <p>男科频道</p></a>
+          <p>男科频道</p></router-link>
         </li>
-        <li class="nav-item"><a href="#">
+        <li class="nav-item"><router-link to="/woman">
           <p><img src="http://image.360kad.com/group2/M00/14/63/CgAgFFn8K5CAY5HdAAALX7YhN1I375.png" alt="女性频道"></p>
-          <p>女性频道</p></a>
+          <p>女性频道</p></router-link>
        </li>
         <li class="nav-item"><a href="#">
           <p><img src="http://image.360kad.com/group2/M00/14/63/CgAgFFn8K62AK5qhAAAL9Cc3hug946.png" alt="养生超市"></p>
